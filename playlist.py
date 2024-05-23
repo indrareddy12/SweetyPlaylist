@@ -13,4 +13,24 @@ spotifyObject = spotipy.Spotify(auth_manager = token)
 playlist_name = input("enter playlist name:")
 playlist_description = input("enter playlist description:")
 
-spotifyObject.user_playlist.creat(user=username, name=playlist_name, public=True, description=playlist_description)
+spotifyObject.user_playlist.create(user=username, name=playlist_name, public=True, description=playlist_description)
+
+
+user_input = input("enter the song:")
+list_of_songs = []
+
+while user_input != 'quit' :
+    result = spotifyObject.search(q=user_input)
+    
+    list_of_songs.append(result['track']['items'][0]['uri'])
+    user_input = input("enter the song:")
+    
+#find the new playlist
+
+Playlist = spotifyObject.user_playlists(user=username) 
+playlist = prePlaylist.['items'][0]['uri']
+
+#add songs
+
+spotifyObject.user_playlist_add_tracks(user=username, playlist_id=playlist, tracks=list_of_songs,)
+    
