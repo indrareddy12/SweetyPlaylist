@@ -28,7 +28,7 @@ while user_input != 'quit' :
 #find the new playlist
 
 Playlist = spotifyObject.user_playlists(user=username) 
-playlist = prePlaylist.['items'][0]['uri']
+playlist = prePlaylist['items'][0]['uri']
 
 #add songs
 
